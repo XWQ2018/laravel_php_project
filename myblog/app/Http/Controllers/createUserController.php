@@ -55,7 +55,6 @@ class createUserController extends Controller
             ]);
             // print_r(date("Y-m-d H:i:s", time()));
             $dateTime = date("Y-m-d H:i:s", time());
-            // dd($ret);
             print_r($ret);
             echo '<br/><hr/>';
             return [
