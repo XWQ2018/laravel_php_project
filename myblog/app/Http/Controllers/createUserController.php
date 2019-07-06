@@ -43,17 +43,31 @@ class createUserController extends Controller
         'update_time' => $currentTime,
         'nickname' => $nickName,
         ]); */
+        try {
 
-        $ret = DB::TABLE('user')->insertGetId([
-            'username' => $userName,
-            'password' => $userPassword,
-            'age' => $age,
-            'create_time' => $currentTime,
-            'update_time' => $currentTime,
-            'nickname' => $nickName,
-        ]);
-        print_r(date("Y-m-d H:i:s", time()));
-        dd($ret);
+            $ret = DB::TABLE('user')->insertGetId([
+                'username' => $userName,
+                'password' => $userPassword,
+                'age' => $age,
+                'create_time' => $currentTime,
+                'update_time' => $currentTime,
+                'nickname' => $nickName,
+            ]);
+            // print_r(date("Y-m-d H:i:s", time()));
+            $dateTime = date("Y-m-d H:i:s", time());
+            // dd($ret);
+            print_r($ret);
+            echo '<br/><hr/>';
+            return [
+                'code' => '20000',
+                'msg' => '数据插入成功',
+                'time' => $dateTime,
+            ];
+
+        } catch (PDOException $e) {
+
+            print_r($e);
+        }
 
         // print_r($userName . '=>' . $userPassword);
     }
