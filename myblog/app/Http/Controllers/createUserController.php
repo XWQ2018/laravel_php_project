@@ -44,12 +44,11 @@ class createUserController extends Controller
         'nickname' => $nickName,
         ]); */
         try {
-
             $ret = DB::TABLE('user')->insertGetId([
                 'username' => $userName,
                 'password' => $userPassword,
                 'age' => $age,
-                'create_time' => $currentTime,
+                // 'create_time' => $currentTime,
                 'update_time' => $currentTime,
                 'nickname' => $nickName,
             ]);
